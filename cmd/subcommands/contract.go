@@ -198,17 +198,11 @@ func contractSub() []*cobra.Command {
 				tokenInt = int64(tAmount * math.Pow10(int(info.Precision)))
 			}
 
-			param := ""
-			if len(args) == 3 {
-				param = args[2]
-			}
-
 			if estimate {
 				estimate, err := conn.EstimateEnergy(
 					signerAddress.String(),
 					addr.String(),
-					args[1],
-					param,
+					[]byte{},
 					valueInt,
 					tTokenID,
 					tokenInt,
@@ -238,8 +232,7 @@ func contractSub() []*cobra.Command {
 			tx, err := conn.TriggerContract(
 				signerAddress.String(),
 				addr.String(),
-				args[1],
-				param,
+				[]byte{},
 				feeLimit,
 				valueInt,
 				tTokenID,

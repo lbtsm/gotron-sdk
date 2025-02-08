@@ -159,6 +159,7 @@ func keysSub() []*cobra.Command {
 			if len(args) == 2 {
 				userName = args[1]
 			}
+			fmt.Println("args ------------- ", args)
 			passphrase, err := getPassphrase()
 			if err != nil {
 				return err
